@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<META HTTP-EQUIV="refresh" CONTENT="15">
+</head>
+<body>
+<p id="demo">Don't click the button. No matter what, do NOT click the button.</p>
+<button onclick="getLocation()">Go for it</button>
+<script>
+var x=document.getElementById("demo");
+function getLocation()
+  {
+  if (navigator.geolocation){
+	navigator.geolocation.getCurrentPosition(showPosition);	
+	} else{x.innerHTML="Geolocation is not supported by this browser.";}
+  }
+function showPosition(position)
+  {
+  x.innerHTML="Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;	
+  }
+</script>
+  <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js">
+   document.addEventListener("deviceready", onDeviceReady, false);
+  function playBeep() {
+        navigator.notification.beep(3);
+    }
+  </script>
+  <button onclick="playBeep()">sound</button>
+  <p><a href="#" onclick="playBeep(); return false;">Play Beep</a></p>
+</body>
+</html>
